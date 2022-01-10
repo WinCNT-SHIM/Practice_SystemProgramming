@@ -85,7 +85,7 @@ public:
         for (int i = 0; i < SIZE; i++)
         {
             Node* temp = new Node();
-            temp->obj = 0;
+            temp->obj = new T();
             temp->pNext = nullptr;
 
             if (pHead == nullptr)
@@ -94,7 +94,6 @@ public:
                 pTail = temp;
                 continue;
             }
-
             temp->pNext = pHead;
             pHead = temp;
         }
@@ -103,22 +102,57 @@ public:
     ~TOjbectListPool()
     {
         // «ÿ¡¶
-        Node* temp = pHead;
-        for (int i = 0; i < SIZE; i++)
+        Node* temp;
+        while (pHead != pTail)
         {
-
+            temp = pHead->pNext;
+            delete pHead->obj;
+            delete pHead;
+            pHead = temp;
         }
-        delete pHead;
+        delete pTail->obj;
         delete pTail;
     }
 
-    OBJCET_PTR Alloc() { return nullptr; }
-    void Free(OBJCET_PTR pObj) {}
+    OBJCET_PTR Alloc()
+    {
+        Node* temp = pHead;
+        while (temp != pTail)
+        {
+            if (temp->obj != nullptr)
+            {
+                OBJCET_PTR ret = temp->obj;
+                temp->obj = nullptr;
+                return ret;
+            }
+            else
+            {
+                temp = temp->pNext;
+            }
+        }
+    }
+
+    void Free(OBJCET_PTR pObj)
+    {
+        Node* temp = pHead;
+        while (temp != pTail)
+        {
+            if (temp->obj == nullptr)
+            {
+                temp->obj = pObj;
+                break;
+            }
+            else
+            {
+                temp = temp->pNext;
+            }
+        }
+    }
 
 private:
     struct Node
     {
-        T obj;
+        T* obj;
         Node* pNext;
     };
 
