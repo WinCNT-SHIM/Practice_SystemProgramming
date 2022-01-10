@@ -33,27 +33,26 @@ public:
         //if (index > 9) index = 0;
         dummyPtr->number = number;
 
-        // 최소값 비교
-        if (number <= minNum)
-        {
-            minNum = number;
-        }
         // forward_list의 원소 수가 10개가 넘어가면 맨 처음의 요소를 지운다
         if (listSize >= 10)
         {
             Dummy* freeDummy = nullptr;
+
             auto literEndBefore = m_list.begin();
             for (int i = 0; i < listSize - 2; i++)
             {
                 // forward_list의 마지막의 바로 앞 요소를 획득
-                literEndBefore = ++literEndBefore;
+                ++literEndBefore;
             }
             // forward_list의 마지막 요소를 획득
             auto literEnd = literEndBefore;
             literEnd++;
             freeDummy = *literEnd;
-            // forward_list의 마지막 요소의 메모리를 반환한다
+
+            // 최근 10개의 최소값과 합계를 재설정한다
             sumNum -= freeDummy->number;
+
+            // forward_list의 마지막 요소의 메모리를 반환한다
             m_arrayPool.Free(freeDummy);
             
             // forward_list의 마지막의 바로 앞 요소의 뒷부분(즉 마지막 요소)를 삭제
@@ -67,7 +66,15 @@ public:
     void Print()
     {
         /*최근 10개의 숫자 평균과 최소값 출력 */
-        printf("최근 10개의 숫자의 평균값: %f\n", (float)sumNum / (float)(listSize));
+        printf("최근 10개의 숫자의 평균값: %f  ", (float)sumNum / (float)(listSize));
+        minNum = 99999;
+        for (auto iter = m_list.begin(); iter != m_list.end(); iter++)
+        {
+            if ((*iter)->number <= minNum)
+            {
+                minNum = (*iter)->number;
+            }
+        }
         printf("최근 10개의 숫자의 최소값: %d\n", minNum);
     }
 
@@ -99,11 +106,6 @@ public:
         dummyPtr->seq = index++;
         dummyPtr->number = number;
         
-        // 최대값 비교
-        if (number >= maxNum)
-        {
-            maxNum = number;
-        }
         // forward_list의 원소 수가 10개가 넘어가면 맨 처음의 요소를 지운다
         if (listSize >= 10)
         {
@@ -133,7 +135,15 @@ public:
     void Print()
     {
         /*최근 10개의 숫자 평균과 최대값 출력 */
-        printf("최근 10개의 숫자의 평균값: %f\n", (float)sumNum / (float)(listSize));
+        printf("최근 10개의 숫자의 평균값: %f  ", (float)sumNum / (float)(listSize));
+        maxNum = -99999;
+        for (auto iter = m_list.begin(); iter != m_list.end(); iter++)
+        {
+            if ((*iter)->number >= maxNum)
+            {
+                maxNum = (*iter)->number;
+            }
+        }
         printf("최근 10개의 숫자의 최대값: %d\n", maxNum);
     }
 
