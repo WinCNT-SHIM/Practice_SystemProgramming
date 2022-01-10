@@ -165,7 +165,7 @@ void main()
     {
         cnt++;
         //1. 매 2초마다 랜덤한 숫자 n을 생성
-        //Sleep(2000);
+        Sleep(2000);
         int n = dist(gen);
         printf("랜덤한 숫자: %d\n", n);
         //2. minAvg.AddNumber(n); minAvg.Print()
