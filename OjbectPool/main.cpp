@@ -45,14 +45,18 @@ public:
             auto literEndBefore = m_list.begin();
             for (int i = 0; i < listSize - 2; i++)
             {
+                // forward_list의 마지막의 바로 앞 요소를 획득
                 literEndBefore = ++literEndBefore;
             }
+            // forward_list의 마지막 요소를 획득
             auto literEnd = literEndBefore;
             literEnd++;
             freeDummy = *(literEnd);
-            
+            // forward_list의 마지막 요소의 메모리를 반환한다
             sumNum -= freeDummy->number;
             m_arrayPool.Free(freeDummy);
+            
+            // forward_list의 마지막의 바로 앞 요소의 뒷부분(즉 마지막 요소)를 삭제
             m_list.erase_after(literEndBefore);
             listSize--;
         }
@@ -83,8 +87,14 @@ class MaxAndAvg
 {
 public:
 
-    void AddNumber(int number) {}
-    void Print() { /*최근 10개의 숫자 평균과 최대값 출력 */ }
+    void AddNumber(int number)
+    {
+
+    }
+    void Print()
+    {
+        /*최근 10개의 숫자 평균과 최대값 출력 */
+    }
 
 private:
     std::forward_list<Dummy*> m_list;
@@ -103,7 +113,7 @@ void main()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     MinAndAvg minAvg;
-    //MaxAndAvg maxAvg;
+    MaxAndAvg maxAvg;
 
     std::random_device rd;
     std::mt19937 gen(rd());

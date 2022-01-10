@@ -81,13 +81,35 @@ public:
     TOjbectListPool()
     {
         // 할당과 초기화
+        pHead, pTail = nullptr;
+        for (int i = 0; i < SIZE; i++)
+        {
+            Node* temp = new Node();
+            temp->obj = 0;
+            temp->pNext = nullptr;
 
+            if (pHead == nullptr)
+            {
+                pHead = temp;
+                pTail = temp;
+                continue;
+            }
+
+            temp->pNext = pHead;
+            pHead = temp;
+        }
     }
 
     ~TOjbectListPool()
     {
         // 해제
+        Node* temp = pHead;
+        for (int i = 0; i < SIZE; i++)
+        {
 
+        }
+        delete pHead;
+        delete pTail;
     }
 
     OBJCET_PTR Alloc() { return nullptr; }
@@ -102,4 +124,10 @@ private:
 
     Node* pHead;
     Node* pTail;
+
+    //Node* GetTail()
+    //{
+    //    if (GetTail()->pNext == nullptr) temp;
+    //    else return GetTail();
+    //}
 };
