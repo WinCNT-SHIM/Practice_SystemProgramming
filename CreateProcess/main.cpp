@@ -10,8 +10,6 @@ int _tmain(int argc, TCHAR* argv[])
 	//// cmd에서 메모장 실행
 	//_tsystem(_T("notepad.exe"));
 	//_tprintf(_T("\n  OK\n"));
-	//// 일시 정지
-	//_tsystem(_T("pause"));
 #pragma endregion
 
 #pragma region CreateProcess 예제 코드
@@ -29,7 +27,7 @@ int _tmain(int argc, TCHAR* argv[])
 	// cmd 입력 값 오류
 	if (argc != 2)
 	{
-		_tprintf(_T("Usage %s"), argv[0]);
+		_tprintf(_T("Usage %s\n"), argv[0]);
 	}
 	else
 	{
@@ -47,26 +45,35 @@ int _tmain(int argc, TCHAR* argv[])
 				&pi)		// 프로세스 정보
 			)
 		{
-			_tprintf(_T("CreateProcess\n"));
+			_tprintf(_T("CreateProcess"));
 
 			// %08x : 16진수 8자리 출력(공백은 0으로 패딩)
 			_tprintf(_T("\n  Parent ID: 0x%08X"), GetCurrentProcessId());
 			_tprintf(_T("\n  Child  ID: 0x%08X"), pi.dwProcessId); // dwProcessId: 프로세스를 식별 값
 
-			// hProcess: 새로 생성된 프로세스에 대한 핸들
-			DWORD priority = GetPriorityClass(pi.hProcess);
+			// 지정된 프로세스의 우선 순위 클래스를 검색
+			DWORD priority = GetPriorityClass(pi.hProcess); // hProcess: 새로 생성된 프로세스에 대한 핸들
 			if (priority)
 			{
 				_tprintf(_T("\n  Priority Class: %d"), priority);
 			}
 
-			// 
+			// 자식 프로세스의 종료를 대기
+			WaitForSingleObject(pi.hProcess, INFINITE);
 
-
+			// 핸들 닫기(안 하면 누수가 발생할 수 있음)
+			CloseHandle(pi.hProcess);
+			CloseHandle(pi.hThread);
+		}
+		else
+		{
+			// 오류 발생 시, 에러 확인
+			_tprintf(_T("CreateProcess Failed %d\n"), GetLastError());
 		}
 		
 	}
 #pragma endregion
-
+	// 일시 정지
+	_tsystem(_T("pause"));
 	return 0;
 }
