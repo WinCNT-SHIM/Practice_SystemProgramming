@@ -33,9 +33,10 @@ int _tmain(int argc, TCHAR* argv[])
 	else
 	{
 		if (
+			// ==================== CreateProcess의 디폴트 실행 예제 ====================
 			CreateProcess(
 				NULL,		// 모듈 이름
-				argv[1],	// 실행하고자 하는 프로그램명(명령행의 첫 번째 원소)
+				argv[1],	// 실행하려는 프로그램명(명령행의 첫 원소), 상수 문자열 불가!
 				NULL,		// 프로세스 핸들 상속 여부
 				NULL,		// 스레드 핸들 상속 여부
 				FALSE,		// 호출 프로세스의 상속 가능한 핸들을 새 프로세스에 상속할지 여부
@@ -52,7 +53,7 @@ int _tmain(int argc, TCHAR* argv[])
 			_tprintf(_T("\n  Parent ID: 0x%08X"), GetCurrentProcessId());
 			_tprintf(_T("\n  Child  ID: 0x%08X"), pi.dwProcessId); // dwProcessId: 프로세스를 식별 값
 
-			// 지정된 프로세스의 우선 순위 클래스를 검색
+			// 지정된 프로세스의 우선 순위 클래스를 검색(조절 가능)
 			DWORD priority = GetPriorityClass(pi.hProcess); // hProcess: 새로 생성된 프로세스에 대한 핸들
 			if (priority)
 			{
@@ -60,6 +61,7 @@ int _tmain(int argc, TCHAR* argv[])
 			}
 
 			// 자식 프로세스의 종료를 대기
+			// (프로세스 대신 쓰레드, 이벤트, 커널 오브젝트 등도 가능)
 			WaitForSingleObject(pi.hProcess, INFINITE);
 
 			// 핸들 닫기(안 하면 누수가 발생할 수 있음)
@@ -71,7 +73,6 @@ int _tmain(int argc, TCHAR* argv[])
 			// 오류 발생 시, 에러 확인
 			_tprintf(_T("CreateProcess Failed %d\n"), GetLastError());
 		}
-		
 	}
 #pragma endregion
 	// 일시 정지
