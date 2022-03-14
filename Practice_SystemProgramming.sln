@@ -9,8 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OjbectPool", "OjbectPool\Oj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CreateProcess", "CreateProcess\CreateProcess.vcxproj", "{782A9A4B-30EF-4D7E-8694-B4DD47DF831F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChangingEnvironmentVariables", "ChangingEnvironmentVariables\ChangingEnvironmentVariables.vcxproj", "{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SnapshotandViewingProcesses", "SnapshotandViewingProcesses\SnapshotandViewingProcesses.vcxproj", "{313171CF-A024-42B5-B60C-BEFF654024DD}"
 EndProject
 Global
@@ -45,14 +43,6 @@ Global
 		{782A9A4B-30EF-4D7E-8694-B4DD47DF831F}.Release|x64.Build.0 = Release|x64
 		{782A9A4B-30EF-4D7E-8694-B4DD47DF831F}.Release|x86.ActiveCfg = Release|Win32
 		{782A9A4B-30EF-4D7E-8694-B4DD47DF831F}.Release|x86.Build.0 = Release|Win32
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Debug|x64.ActiveCfg = Debug|x64
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Debug|x64.Build.0 = Debug|x64
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Debug|x86.ActiveCfg = Debug|Win32
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Debug|x86.Build.0 = Debug|Win32
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Release|x64.ActiveCfg = Release|x64
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Release|x64.Build.0 = Release|x64
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Release|x86.ActiveCfg = Release|Win32
-		{93309AD6-34DB-423F-BE1A-02B81A6D3DBC}.Release|x86.Build.0 = Release|Win32
 		{313171CF-A024-42B5-B60C-BEFF654024DD}.Debug|x64.ActiveCfg = Debug|x64
 		{313171CF-A024-42B5-B60C-BEFF654024DD}.Debug|x64.Build.0 = Debug|x64
 		{313171CF-A024-42B5-B60C-BEFF654024DD}.Debug|x86.ActiveCfg = Debug|Win32
