@@ -24,7 +24,8 @@ int _tmain(int argc, TCHAR* argv[])
 	// 프로세스 정보 초기화
 	ZeroMemory(&pi, sizeof(pi));
 
-	// cmd 입력 값 오류
+	// cmd 입력 값 오류 시
+	// 속성 --> 디버깅 --> 명령 인수에 작성할 수 있다
 	if (argc != 2)
 	{
 		_tprintf(_T("Usage %s\n"), argv[0]);
