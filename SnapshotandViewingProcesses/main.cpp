@@ -73,7 +73,7 @@ BOOL GetProcessList()
 		ListProcessModules(pe32.th32ProcessID);
 		ListProcessThreads(pe32.th32ProcessID);
 
-	} while (Process32Next(hProcessSnap, &pe32));
+	} while (Process32Next(hProcessSnap, &pe32));	// 다음 프로세스 리스트를 획득
 
 	CloseHandle(hProcessSnap);
 	return(TRUE);
