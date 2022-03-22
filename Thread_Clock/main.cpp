@@ -57,9 +57,9 @@ UINT WINAPI TimerFunc(LPVOID lpParam)
 		deltaTime *= 1000; //ms로 변환
 
 		// 1분이 되면 출력
-		if (deltaTime > 1000)
+		if (deltaTime > 60000)
 		{
-			std::cout << deltaTime << std::endl;
+			std::cout << "1분이 지났습니다." << std::endl;
 			deltaTime = 0;
 			curCnt++;
 			QueryPerformanceCounter(&start);
