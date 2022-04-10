@@ -1,24 +1,32 @@
-/// <summary>
-/// 1분을 측정해서 화면에 출력해주는 (1분 뒤 알람) 함수를 별도의 스레드로 실행
-/// </summary>
-#include <windows.h> // HANDLE
-#include <process.h> // THREAD
-#include <time.h>
+#include <windows.h>
 #include <iostream>
+#include "Timer.h"
+
+using namespace std;
 
 int main()
 {
-	HANDLE hThread;
-	unsigned int threadID;
+	Timer* timer = new Timer();
 
-	// 알람의 횟수 설정(무한 루프 방지)
-	int alarmCnt = 5;
 
-	hThread = (HANDLE)_beginthreadex(nullptr, 0, TimerFunc, &alarmCnt, 0, &threadID);
+	cout << "측정 시작" << endl;
 
-	WaitForSingleObject(hThread, INFINITE);
+	//timer->StartTimer_QueryPerformence();
+	//timer->StartTimer_GetTickCount64();
+	//timer->StartTimer_timeGetTime();
+	timer->StartTimer_SystemClock();
+	Sleep(2000);
+	//timer->EndTimer_QueryPerformence();
+	//timer->EndTimer_GetTickCount64();
+	//timer->EndTimer_timeGetTime();
+	timer->EndTimer_SystemClock();
 
-	CloseHandle(hThread);
-	system("pause");
+	//cout <<	timer->ReturnDeltaTime_QueryPerformence();
+	//cout <<	timer->ReturnDeltaTime_GetTickCount64() << endl;
+	//cout <<	timer->ReturnDeltaTime_timeGetTime() << endl;
+	cout <<	timer->ReturnDeltaTime_SystemClock() << endl;
+
+	cout << "측정 종료" << endl;
+	//system("pause");
 	return 0;
 }
