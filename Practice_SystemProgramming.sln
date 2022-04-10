@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Example_ExceptionFilter", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Thread_Clock", "Thread_Clock\Thread_Clock.vcxproj", "{04C03D04-C5EF-4BE0-B268-09B04B63AD13}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Timer", "Timer\Timer.vcxproj", "{0CDA2747-52BC-42DD-BC60-03F2E520C20A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{04C03D04-C5EF-4BE0-B268-09B04B63AD13}.Release|x64.Build.0 = Release|x64
 		{04C03D04-C5EF-4BE0-B268-09B04B63AD13}.Release|x86.ActiveCfg = Release|Win32
 		{04C03D04-C5EF-4BE0-B268-09B04B63AD13}.Release|x86.Build.0 = Release|Win32
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Debug|x64.ActiveCfg = Debug|x64
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Debug|x64.Build.0 = Debug|x64
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Debug|x86.ActiveCfg = Debug|Win32
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Debug|x86.Build.0 = Debug|Win32
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Release|x64.ActiveCfg = Release|x64
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Release|x64.Build.0 = Release|x64
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Release|x86.ActiveCfg = Release|Win32
+		{0CDA2747-52BC-42DD-BC60-03F2E520C20A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
